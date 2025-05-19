@@ -24,7 +24,7 @@ const MovieImage: React.FC<IMovieCard> = ({
             className="rounded-t-xl justify-center grid object-cover"
             alt={title}
           />
-          <div className="p-5 z-2 px-2">
+          <div className="pb-4 px-2">
             <p className="text-green-500 pt-2 font-semibold ">
               ({releaseYear})
             </p>

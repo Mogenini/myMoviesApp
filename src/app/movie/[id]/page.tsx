@@ -116,8 +116,8 @@ const MovieDetailPage = () => {
             />
             <div className="flex flex-col space-y-4">
               <h1 className="text-3xl font-bold">{movie.title}</h1>
-              <p className="italic text-slate-500">{movie.tagline}</p>
-              <p>{movie.overview}</p>
+              <p className="italic text-slate-500 text-justify">{movie.tagline}</p>
+              <p className="text-justify">{movie.overview}</p>
               <div>
                 <strong>Release:</strong> {movie.release_date.toString()}
               </div>
