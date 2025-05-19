@@ -148,7 +148,7 @@ const MovieDetailPage = () => {
                 className={`px-4 py-2 rounded ${
                   isFavorite
                     ? "bg-red-500 hover:bg-red-600"
-                    : "bg-yellow-500 hover:bg-yellow-600"
+                    : "bg-emerald-500 hover:bg-emerald-600-600"
                 } text-white font-bold w-max`}
               >
                 {isFavorite ? "Remove from Favorites" : "Add to Favorites"}

@@ -54,8 +54,8 @@ const MovieCard: React.FC<IMovieCard> = ({
                         {/* Movie Rating */}
                         <div className="grid-cols-2 flex justify-between">
                             <div className="font-black flex flex-col">
-                                <span className="text-yellow-500 text-xl">SCORE</span>
-                                <span className="text-3xl flex gap-x-1 items-center group-hover:text-yellow-600">
+                                <span className="text-emerald-500 text-xl">SCORE</span>
+                                <span className="text-3xl flex gap-x-1 items-center group-hover:text-emerald-600">
                                     {voteAverage.toFixed(1)}
                                     <svg
                                         width="24px"
@@ -85,7 +85,7 @@ const MovieCard: React.FC<IMovieCard> = ({
                                                     13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856
                                                     6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555
                                                     6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                                fill="#eab308"
+                                                fill="#10B981"
                                             />
                                         </g>
                                     </svg>
