@@ -6,14 +6,24 @@ import { getMovieById } from "@/services/movies/getMovieById";
 import { markAsFavorite } from "@/services/accounts/markAsFavorite";
 import { useGuestSession } from "@/providers/GuestSessionContext";
 import { useParams } from "next/navigation";
+import { getMovieRecommendations } from "@/services/movies/getMovieRecomendations";
 
 const MovieDetailPage = () => {
+  //Movie
   const { id } = useParams();
   const [movie, setMovie] = useState<IMovieDetail>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Favorites
   const [isFavorite, setIsFavorite] = useState(false);
   const { guestSessionId } = useGuestSession();
+
+  // Recomendations
+  const [movieRecommendations, setMovieRecommendations] = useState<any[]>([]);
+  const [loadingRecommendations, setLoadingRecommendations] =
+    useState<boolean>(true);
+
   // Cargar detalles de la película
   useEffect(() => {
     if (!id || typeof id !== "string") return;
@@ -31,6 +41,7 @@ const MovieDetailPage = () => {
     };
     fetchMovie();
   }, [id]);
+
   // Verificar si está en favoritos (localStorage)
   useEffect(() => {
     if (!id || typeof id !== "string") return;
@@ -62,9 +73,33 @@ const MovieDetailPage = () => {
       console.error("Failed to update favorite:", error);
     }
   };
+
+  // Llamamos recomendaciones
+  useEffect(() => {
+    if (!id || typeof id !== "string") return;
+    const fetchRecommendations = async () => {
+      setLoadingRecommendations(true);
+      try {
+        const data = await getMovieRecommendations(id);
+        // Save the array of results of movies, not the page info
+        setMovieRecommendations(data.results);
+      } catch (err) {
+        console.error("Error fetching movie", err);
+        setError("Could not load movie.");
+      } finally {
+        setLoadingRecommendations(false);
+      }
+    };
+    fetchRecommendations();
+  }, [id]);
+
   if (loading) return <div>Loading movie...</div>;
+
   if (error) return <div>{error}</div>;
+
   if (!movie) return <div>No movie found.</div>;
+
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex flex-col sm:flex-row gap-6">
