@@ -26,7 +26,7 @@ const NowPlayingPage = () => {
       }, []);
 
       return (
-        <MovieList movies={movies} loading={loading} titlePage={"Now-Playing"}/>
+        <MovieList movies={movies} loading={loading} />
     );
 }
 

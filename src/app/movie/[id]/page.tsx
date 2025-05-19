@@ -162,11 +162,10 @@ const MovieDetailPage = () => {
         {movieRecommendations.length > 0 ? (
           <div className="w-screen p-0">
             <MovieCarousel movies={movieRecommendations}></MovieCarousel>
-            
           </div>
         ) : (
           <div>
-            <p className="text-center text-gray-500">
+            <p className="text-center text-gray-500 text-xl">
               No recommendations available
             </p>
           </div>

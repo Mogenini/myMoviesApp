@@ -1,5 +1,6 @@
 import Config from "@/config";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface IMovieCard {
     title: string;
@@ -7,7 +8,10 @@ interface IMovieCard {
     posterPath: string;
     releaseYear: number;
     description: string;
+    size?: "normalPage" | "recommendation"
 }
+
+
 
 const MovieCard: React.FC<IMovieCard> = ({
     title,
@@ -15,22 +19,23 @@ const MovieCard: React.FC<IMovieCard> = ({
     posterPath,
     releaseYear,
     description,
+    size= "normalPage"
 }) => {
-    // const router = useRouter();
     const poster = Config.IMAGE_SOURCE + posterPath;
-    // You can use this to navigate instead of Link in the page.tsx
-    /* const navigateMovies = (id: number) => {
-    router.push(`/movie/${id}`);
-    }; */
+    const sizePoster= {
+        normalPage: "max-w-[300px]", 
+        recommendation: "max-w-[190px]",
+    }
+    
     return (
         <div className="flex items-center justify-center">
             <div className="mx-auto bg-white rounded-3xl shadow-xl">
-                <div className="grid rounded-3xl max-w-[360px] shadow-sm bg-slate-100 flex-col group">
+            <div className={cn("grid rounded-3xl  shadow-sm bg-slate-100 flex-col group",sizePoster[size])}>
                     {/* Poster Image */}
                     <Image
                         src={poster}
-                        width="360"
-                        height="200"
+                        width={size === "recommendation" ? 200:300}
+                        height={size === "recommendation" ? 150:190}
                         className="rounded-t-3xl justify-center grid object-cover"
                         alt={title}
                     />

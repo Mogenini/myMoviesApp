@@ -11,7 +11,7 @@ const PopularClientPage = () => {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate 2s delay
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate 2s delay
       try {
         const data = await getPopularMovies();
         setMovies(data.results);

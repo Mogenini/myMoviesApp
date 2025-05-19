@@ -31,7 +31,7 @@ interface MovieProps {
       >
         <CarouselContent className="w-full h-auto">
           {Array.from({ length: movies.length }).map((_, index) => (
-            <CarouselItem key={index} className="basis-md">
+            <CarouselItem key={index} className="basis-sm">
               <div className="p-1">
                 <Card>
                   <Link
@@ -48,6 +48,7 @@ interface MovieProps {
                         posterPath={movies[index].poster_path}
                         releaseYear={movies[index].release_date}
                         description={movies[index].overview}
+                        size="recommendation"
                       />
                     </CardContent>
                   </Link>

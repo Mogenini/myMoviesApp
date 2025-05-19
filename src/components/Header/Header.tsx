@@ -17,12 +17,12 @@ const Header = () => {
     return <div>
         <header className=" w-full border-b shadow-sm">
             <div className="container mx-auto flex items-center justify-between px-4 py-3">
-                <Link href={"/"} className="text-lg font-bold text-gray-700 hover:text-blue-700 transition-colors">
+                <Link href={"/"} className="text-lg font-bold text-gray-700 hover:text-shadow-emerald-200 transition-colors">
                     Movies DB
                 </Link>
                 <nav className="flex gap-6">
                     {links.map(({ href, label }) => (
-                        <Link key={href} href={href} className={clsx("text-sm font-medium transition-colors hover:text-blue-600",pathname === href ? "text-blue-600 underline" : "text-gray-600")}>
+                        <Link key={href} href={href} className={clsx("text-sm font-medium transition-colors hover:text-shadow-emerald-300",pathname === href ? "text-emerald-600 underline" : "text-gray-600")}>
                             {label}
                         </Link>
                     ))}
