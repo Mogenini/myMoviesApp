@@ -3,26 +3,30 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
+import { usePathname } from "next/navigation";
+import MovieList from "../MovieList/MovieList";
+import MovieImage from "../MovieImage/MovieImage";
+
 interface MovieProps {
-    movies: any[];
-    loading?: boolean;
-  }
-  
-  const MovieCarousel = ({ movies, loading }: MovieProps) => {
-    const autoplayInstance = useRef(
-      Autoplay({ delay: 1500, stopOnInteraction: false })
-    );
-  
-    return (
-      <div className="mx-10">
+  movies: any[];
+  loading?: boolean;
+}
+
+const MovieCarousel = ({ movies, loading }: MovieProps) => {
+  const autoplayInstance = useRef(
+    Autoplay({ delay: 1500, stopOnInteraction: false })
+  );
+
+  const pathname = usePathname();
+
+  return (
+    <div className="mx-10">
       <Carousel
         opts={{
           align: "start",
@@ -34,7 +38,23 @@ interface MovieProps {
           {Array.from({ length: movies.length }).map((_, index) => (
             <CarouselItem key={index} className="basis-sm">
               <div className="p-1">
-                
+                {pathname === "/" ? (
+                  <div>
+                    <Link
+                      key={movies[index].id}
+                      href={{
+                        pathname: `/movie/${movies[index].id}`,
+                        query: { from: "popular" },
+                      }}
+                    >
+                      <MovieImage
+                        title={movies[index].title}
+                        posterPath={movies[index].poster_path}
+                        releaseYear={movies[index].release_date}
+                      />
+                    </Link>
+                  </div>
+                ) : (
                   <Link
                     key={movies[index].id}
                     href={{
@@ -53,14 +73,14 @@ interface MovieProps {
                       />
                     </CardContent>
                   </Link>
-                
+                )}
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      </div>
-    );
-  };
-  
-  export default MovieCarousel;
+    </div>
+  );
+};
+
+export default MovieCarousel;
