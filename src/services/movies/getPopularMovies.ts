@@ -1,8 +1,8 @@
 import api from "../api";
 
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (pageSession:Number) => {
   let res: any;
-  const endpoint = "/movie/popular?language=en-US";
+  const endpoint = `/movie/popular?language=en-US&page=${pageSession}`;
   await api
     .get(endpoint)
     .then((data) => {

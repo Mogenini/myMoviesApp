@@ -1,8 +1,8 @@
 import api from "../api";
 
-export const getUpcomingMovies = async () => {
+export const getUpcomingMovies = async (pageSession:Number ) => {
   let res: any;
-  const endpoint = "/movie/upcoming?language=en-US&page=1";
+  const endpoint = `/movie/upcoming?language=en-US&page=${pageSession}`;
   await api
     .get(endpoint)
     .then((data) => {

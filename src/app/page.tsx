@@ -23,9 +23,9 @@ const Home = () => {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate 2s delay
+      await new Promise((resolve) => setTimeout(resolve, 500)); // simulate 2s delay
       try {
-        const data = await getUpcomingMovies();
+        const data = await getUpcomingMovies(1);
         setUpcomingMovies(data);
       } catch (err) {
         console.error("Error loading movies: ", err);
@@ -39,9 +39,9 @@ const Home = () => {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setLoadingPopularMovies(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate 2s delay
+      await new Promise((resolve) => setTimeout(resolve, 500)); // simulate 2s delay
       try {
-        const data = await getPopularMovies();
+        const data = await getPopularMovies(1);
         setPopularMovies(data.results);
       } catch (err) {
         console.error("Error loading movies: ", err);
@@ -55,9 +55,9 @@ const Home = () => {
   useEffect(() => {
     const fetchNowPlayingMovies = async () => {
       setLoadingNowPlayingMovies(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate 2s delay
+      await new Promise((resolve) => setTimeout(resolve, 500)); // simulate 2s delay
       try {
-        const data = await getNowPlayingMovies();
+        const data = await getNowPlayingMovies(1);
         setNowPlayingMovies(data.results);
       } catch (err) {
         console.error("Error loading movies: ", err);
