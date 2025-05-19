@@ -35,14 +35,14 @@ const MovieCard: React.FC<IMovieCard> = ({
                     <Image
                         src={poster}
                         width={size === "recommendation" ? 250:300}
-                        height={size === "recommendation" ? 150:190}
+                        height={size === "recommendation" ? 100:190}
                         className="rounded-t-3xl justify-center grid object-cover"
                         alt={title}
                     />
                     <div className="p-5 z-10">
                         {/* Movie Title */}
-                        <p className="h-10">{title}</p>
-                        <p className="text-slate-400 pt-2 font-semibold ">
+                        <p className="h-5">{title}</p>
+                        <p className="text-green-500 pt-2 font-semibold ">
                             ({releaseYear})
                         </p>
                         {/* Movie Description */}

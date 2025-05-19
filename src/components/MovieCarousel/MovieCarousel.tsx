@@ -22,6 +22,7 @@ interface MovieProps {
     );
   
     return (
+      <div className="mx-10">
       <Carousel
         opts={{
           align: "start",
@@ -58,6 +59,7 @@ interface MovieProps {
           ))}
         </CarouselContent>
       </Carousel>
+      </div>
     );
   };
   

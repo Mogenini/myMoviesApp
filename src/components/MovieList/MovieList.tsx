@@ -16,37 +16,42 @@ const pageItems = [
   { path: "/", label: "Home" },
 ];
 
-
 const MovieList: React.FC<MovieProps> = ({ movies, loading }) => {
   const pathname = usePathname();
 
   return (
     <div>
-      {pageItems.map((item) =>
-        item.path === pathname &&  (
-          item.path === "/" ? (
+      {pageItems.map(
+        (item) =>
+          item.path === pathname &&
+          (item.path === "/" ? (
             <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 py-[10]">
-              {movies?.map((movie,index) => (
-                index < 5 && (
-                <Link
-                  key={movie.id}
-                  href={{
-                    pathname: `/movie/${movie.id}`,
-                    query: { from: "popular" },
-                  }}
-                >
-                  <MovieImage
-                    title={movie.title}
-                    posterPath={movie.poster_path}
-                    releaseYear={movie.release_date}
-                  />
-                </Link>
-                )
-              ))}
+              {movies?.map(
+                (movie, index) =>
+                  index < 5 && (
+                    <Link
+                      key={movie.id}
+                      href={{
+                        pathname: `/movie/${movie.id}`,
+                        query: { from: "popular" },
+                      }}
+                    >
+                      <MovieImage
+                        title={movie.title}
+                        posterPath={movie.poster_path}
+                        releaseYear={movie.release_date}
+                      />
+                    </Link>
+                  )
+              )}
             </div>
           ) : (
             <div key={item.path}>
-              <h3 className="text-3xl text-emerald-800 font-bold mb-6">{item.label}</h3>
+              <div className="pb-2">
+                <h3 className="text-3xl text-emerald-800 font-bold mb-2 border-b-2 border-b-emerald-950">
+                  {item.label}
+                </h3>
+              </div>
               {loading && (
                 <h5 className="text-lg text-gray-500">Cargando...</h5>
               )}
@@ -70,8 +75,7 @@ const MovieList: React.FC<MovieProps> = ({ movies, loading }) => {
                 ))}
               </div>
             </div>
-          )
-        )
+          ))
       )}
     </div>
   );

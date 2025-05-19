@@ -35,7 +35,7 @@ const PopularClientPage = () => {
   };
 
   return (
-    <div>
+    <div className="mx-10">
       <PaginationPage
         pageNumber={pageNumber}
         prevPage={prevPage}

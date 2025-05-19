@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import Pill from "@/components/Pill/Pill";
 import React, { useEffect, useState } from "react";
 import { getUpcomingMovies } from "@/services/movies/getUpcomingMovies";
 import MovieList from "@/components/MovieList/MovieList";
@@ -42,6 +40,7 @@ const Home = () => {
       await new Promise((resolve) => setTimeout(resolve, 500)); // simulate 2s delay
       try {
         const data = await getPopularMovies(1);
+        
         setPopularMovies(data.results);
       } catch (err) {
         console.error("Error loading movies: ", err);
@@ -69,9 +68,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mx-10">
       <div>
-        <h3 className="text-3xl text-emerald-800 font-bold mb-6 pt-[10px] border-b-2 border-b-emerald-950">Now Playing Movies:</h3>
+        <h3 className="text-3xl text-emerald-800 font-bold mb-2 pt-[10px] border-b-2 border-b-emerald-950">Now Playing Movies:</h3>
         <MovieList movies={nowPlayingMovies}></MovieList>
       </div>
       <div>

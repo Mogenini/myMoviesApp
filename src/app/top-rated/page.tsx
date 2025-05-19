@@ -39,7 +39,7 @@ const TopRatedPage = () => {
   }
 
   return (
-    <div>
+    <div className="mx-10">
       <PaginationPage pageNumber={pageNumber} prevPage={prevPage} nextPage={nextPage}></PaginationPage>
       <MovieList movies={movies} loading={loading} />
       <PaginationPage pageNumber={pageNumber} prevPage={prevPage} nextPage={nextPage}></PaginationPage>
