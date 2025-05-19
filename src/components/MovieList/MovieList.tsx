@@ -2,6 +2,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MovieImage from "../MovieImage/MovieImage";
+import PaginationPage from "../PaginationPage/PaginationPage";
 interface MovieProps {
   movies: any[];
   loading?: boolean;

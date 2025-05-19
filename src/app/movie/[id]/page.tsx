@@ -7,18 +7,7 @@ import { markAsFavorite } from "@/services/accounts/markAsFavorite";
 import { useGuestSession } from "@/providers/GuestSessionContext";
 import { useParams } from "next/navigation";
 import { getMovieRecommendations } from "@/services/movies/getMovieRecomendations";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import MovieCard from "@/components/MovieCard/MovieCard";
-import Link from "next/link";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import { Card } from "@/components/ui/card";
 import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
 
 const MovieDetailPage = () => {
@@ -37,10 +26,6 @@ const MovieDetailPage = () => {
   const [loadingRecommendations, setLoadingRecommendations] =
     useState<boolean>(true);
 
-  //
-  const autoplayInstance = useRef(
-    Autoplay({ delay: 2500, stopOnInteraction: false })
-  );
 
   // Cargar detalles de la película
   useEffect(() => {
