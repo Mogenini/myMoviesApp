@@ -7,6 +7,19 @@ import { markAsFavorite } from "@/services/accounts/markAsFavorite";
 import { useGuestSession } from "@/providers/GuestSessionContext";
 import { useParams } from "next/navigation";
 import { getMovieRecommendations } from "@/services/movies/getMovieRecomendations";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import MovieCard from "@/components/MovieCard/MovieCard";
+import Link from "next/link";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
 
 const MovieDetailPage = () => {
   //Movie
@@ -23,6 +36,11 @@ const MovieDetailPage = () => {
   const [movieRecommendations, setMovieRecommendations] = useState<any[]>([]);
   const [loadingRecommendations, setLoadingRecommendations] =
     useState<boolean>(true);
+
+  //
+  const autoplayInstance = useRef(
+    Autoplay({ delay: 2500, stopOnInteraction: false })
+  );
 
   // Cargar detalles de la película
   useEffect(() => {
@@ -82,7 +100,7 @@ const MovieDetailPage = () => {
       try {
         const data = await getMovieRecommendations(id);
         // Save the array of results of movies, not the page info
-        setMovieRecommendations(data.results);
+        setMovieRecommendations(data);
       } catch (err) {
         console.error("Error fetching movie", err);
         setError("Could not load movie.");
@@ -99,42 +117,60 @@ const MovieDetailPage = () => {
 
   if (!movie) return <div>No movie found.</div>;
 
-
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <div className="flex flex-col sm:flex-row gap-6">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          className="rounded-xl w-full sm:w-64"
-          width={300}
-          height={450}
-        />
-        <div className="flex flex-col space-y-4">
-          <h1 className="text-3xl font-bold">{movie.title}</h1>
-          <p className="italic text-slate-500">{movie.tagline}</p>
-          <p>{movie.overview}</p>
-          <div>
-            <strong>Release:</strong> {movie.release_date.toString()}
+    <div>
+      <Card className=" max-w-4xl mx-auto p-4">
+        <div className="max-w-4xl mx-auto p-4">
+          <div className="flex flex-col sm:flex-row gap-6">
+            <Image
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+              className="rounded-xl w-full sm:w-64"
+              width={300}
+              height={450}
+            />
+            <div className="flex flex-col space-y-4">
+              <h1 className="text-3xl font-bold">{movie.title}</h1>
+              <p className="italic text-slate-500">{movie.tagline}</p>
+              <p>{movie.overview}</p>
+              <div>
+                <strong>Release:</strong> {movie.release_date.toString()}
+              </div>
+              <div>
+                <strong>Genres:</strong>{" "}
+                {movie.genres.map((g) => g.name).join(", ")}
+              </div>
+              <div>
+                <strong>Rating:</strong> {movie.vote_average.toFixed(1)}
+              </div>
+              <button
+                onClick={handleToggleFavorite}
+                className={`px-4 py-2 rounded ${
+                  isFavorite
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-yellow-500 hover:bg-yellow-600"
+                } text-white font-bold w-max`}
+              >
+                {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+              </button>
+            </div>
           </div>
-          <div>
-            <strong>Genres:</strong>{" "}
-            {movie.genres.map((g) => g.name).join(", ")}
-          </div>
-          <div>
-            <strong>Rating:</strong> {movie.vote_average.toFixed(1)}
-          </div>
-          <button
-            onClick={handleToggleFavorite}
-            className={`px-4 py-2 rounded ${
-              isFavorite
-                ? "bg-red-500 hover:bg-red-600"
-                : "bg-yellow-500 hover:bg-yellow-600"
-            } text-white font-bold w-max`}
-          >
-            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          </button>
         </div>
+      </Card>
+      <div>
+        <h3 className="text-center font-bold text-2xl py-2 ">Recomendations</h3>
+        {movieRecommendations.length > 0 ? (
+          <div className="w-screen p-0">
+            <MovieCarousel movies={movieRecommendations}></MovieCarousel>
+            
+          </div>
+        ) : (
+          <div>
+            <p className="text-center text-gray-500">
+              No recommendations available
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

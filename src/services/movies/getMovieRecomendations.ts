@@ -2,7 +2,7 @@ import api from "../api";
 export const getMovieRecommendations = async (id: string) => {
   try {
     const { data } = await api.get(`/movie/${id}/recommendations`);
-    return data;
+    return data.results;
   } catch (error) {
     throw error;
   }
