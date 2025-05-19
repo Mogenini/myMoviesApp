@@ -8,14 +8,17 @@ import { getNowPlayingMovies } from '@/services/movies/getNowPlayingMovies';
 const Home = () => {
   //Upcoming Movies
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
 
   //Popular Movies
   const [loadingPopularMovies, setLoadingPopularMovies] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [popularMovies, setPopularMovies] = useState<any[]>([]);
 
   // Now playing
   const [loadingNowPlayingMovies, setLoadingNowPlayingMovies] = useState(false); 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [nowPlayingMovies, setNowPlayingMovies] = useState<any[]>([]);
 
   useEffect(() => {

@@ -22,11 +22,10 @@ const MovieDetailPage = () => {
   const { guestSessionId } = useGuestSession();
 
   // Recomendations
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [movieRecommendations, setMovieRecommendations] = useState<any[]>([]);
-  const [loadingRecommendations, setLoadingRecommendations] =
-    useState<boolean>(true);
-
-
+  const [loadingRecomendations, setLoadingRecommendations] = useState<boolean>(true);
+  
   // Cargar detalles de la película
   useEffect(() => {
     if (!id || typeof id !== "string") return;

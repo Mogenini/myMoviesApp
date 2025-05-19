@@ -10,6 +10,7 @@ import PaginationPage from "@/components/PaginationPage/PaginationPage";
 
 const TopRatedPage = () => {
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [movies, setMovies] = useState<any[]>([]);
 
   const [pageNumber, setPageNumber] = useState(1);

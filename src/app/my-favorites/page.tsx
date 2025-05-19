@@ -8,6 +8,7 @@ import PaginationPage from "@/components/PaginationPage/PaginationPage";
 const MyFavoritesPage = () => {
   const { guestSessionId } = useGuestSession();
   const [loading, setLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [movies, setMovies] = useState<any[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
 
