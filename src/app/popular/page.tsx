@@ -1,39 +1,32 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { getPopularMovies } from "@/services/movies/getPopularMovies";
+import MovieList from "@/components/MovieList/MovieList";
 
 const PopularClientPage = () => {
-    const [loading, setLoading] = useState(false);
-    const [movies, setMovies] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState<any[]>([]);
 
-    useEffect(() => {
-        const fetchPopularMovies = async () => {
-            setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate 2s delay
-            try {
-                const data = await getPopularMovies();
-                setMovies(data.results);
-            } catch (err) {
-                console.error("Error loading movies: ", err);
-            }
-            setLoading(false);
-        };
+  useEffect(() => {
+    const fetchPopularMovies = async () => {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate 2s delay
+      try {
+        const data = await getPopularMovies();
+        setMovies(data.results);
+      } catch (err) {
+        console.error("Error loading movies: ", err);
+      }
+      setLoading(false);
+    };
 
-        fetchPopularMovies();
-    }, []);
+    fetchPopularMovies();
+  }, []);
 
-    return (
-        <div>
-            <h2 className="text-xl font-bold mb-4">Client-rendered Popular Movies</h2>
-            {loading && <p className="text-sm text-muted-foreground">Cargando...</p>}
-            {movies.map((movie) => (
-                <div key={movie.id}>
-                    <h3>{movie.title}</h3>
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <MovieList movies={movies} loading={loading}  />
+  );
 };
 
 export default PopularClientPage;

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 
 import { getTopRatedMovies } from "@/services/movies/getTopRatedMovies";
 
+import MovieList from "@/components/MovieList/MovieList";
+
 const TopRatedPage = () => {
 
   const [loading, setLoading] = useState(false);
@@ -26,8 +28,7 @@ const TopRatedPage = () => {
   }, []);
 
   return (
-    <div></div>
-
+    <MovieList movies={movies} loading={loading} />
   );
 };
 

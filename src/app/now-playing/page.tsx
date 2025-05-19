@@ -1,7 +1,7 @@
 'use client'
 import { getNowPlayingMovies } from '@/services/movies/getNowPlayingMovies';
 import React, { useEffect, useState } from "react";
-
+import MovieList from '@/components/MovieList/MovieList';
 
 
 const NowPlayingPage = () => {
@@ -26,16 +26,7 @@ const NowPlayingPage = () => {
       }, []);
 
       return (
-        <div>
-            <h2 className="text-xl font-bold mb-4">Client-rendered Now-Playing</h2>
-            {loading && <p className="text-sm text-muted-foreground">Cargando...</p>}
-            {movies.map((movie) => (
-                <div key={movie.id}>
-                    <h3>{movie.title}</h3>
-                    
-                </div>
-            ))}
-        </div>
+        <MovieList movies={movies} loading={loading} titlePage={"Now-Playing"}/>
     );
 }
 
