@@ -4,6 +4,7 @@ import { getUpcomingMovies } from "@/services/movies/getUpcomingMovies";
 import MovieList from "@/components/MovieList/MovieList";
 import { getPopularMovies } from "@/services/movies/getPopularMovies";
 import { getNowPlayingMovies } from '@/services/movies/getNowPlayingMovies';
+import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
 
 const Home = () => {
   //Upcoming Movies
@@ -78,7 +79,7 @@ const Home = () => {
       </div>
       <div>
         <h3 className="text-3xl text-emerald-800 font-bold mb-6 pt-[10px] border-b-2 border-b-emerald-950">Upcoming Movies:</h3>
-        <MovieList movies={upcomingMovies} loading={loading}></MovieList>
+        <MovieCarousel movies={upcomingMovies}></MovieCarousel>
         <div className="grid grid-row-1"></div>
       </div>
       <div>

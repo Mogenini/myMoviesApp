@@ -2,7 +2,6 @@ import MovieCard from "../MovieCard/MovieCard";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MovieImage from "../MovieImage/MovieImage";
-import PaginationPage from "../PaginationPage/PaginationPage";
 interface MovieProps {
   movies: any[];
   loading?: boolean;
@@ -25,10 +24,11 @@ const MovieList: React.FC<MovieProps> = ({ movies, loading }) => {
         (item) =>
           item.path === pathname &&
           (item.path === "/" ? (
-            <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 py-[10]">
+            <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 py-[10]" key={1}>
               {movies?.map(
                 (movie, index) =>
                   index < 5 && (
+                    <div key={movie.id}>
                     <Link
                       key={movie.id}
                       href={{
@@ -42,6 +42,7 @@ const MovieList: React.FC<MovieProps> = ({ movies, loading }) => {
                         releaseYear={movie.release_date}
                       />
                     </Link>
+                    </div>
                   )
               )}
             </div>
