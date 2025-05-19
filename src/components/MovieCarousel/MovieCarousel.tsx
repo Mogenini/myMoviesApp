@@ -33,7 +33,7 @@ interface MovieProps {
           {Array.from({ length: movies.length }).map((_, index) => (
             <CarouselItem key={index} className="basis-sm">
               <div className="p-1">
-                <Card>
+                
                   <Link
                     key={movies[index].id}
                     href={{
@@ -52,7 +52,7 @@ interface MovieProps {
                       />
                     </CardContent>
                   </Link>
-                </Card>
+                
               </div>
             </CarouselItem>
           ))}

@@ -143,7 +143,7 @@ const MovieDetailPage = () => {
         </div>
       </Card>
       <div>
-        <h3 className="text-center font-bold text-2xl py-2 ">Recomendations</h3>
+        <h3 className="text-center font-bold text-emerald-800 text-2xl py-2 ">Recomendations</h3>
         {movieRecommendations.length > 0 ? (
           <div className="w-screen p-0">
             <MovieCarousel movies={movieRecommendations}></MovieCarousel>

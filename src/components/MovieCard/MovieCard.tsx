@@ -24,7 +24,7 @@ const MovieCard: React.FC<IMovieCard> = ({
     const poster = Config.IMAGE_SOURCE + posterPath;
     const sizePoster= {
         normalPage: "max-w-[300px]", 
-        recommendation: "max-w-[190px]",
+        recommendation: "max-w-[250px]",
     }
     
     return (
@@ -34,7 +34,7 @@ const MovieCard: React.FC<IMovieCard> = ({
                     {/* Poster Image */}
                     <Image
                         src={poster}
-                        width={size === "recommendation" ? 200:300}
+                        width={size === "recommendation" ? 250:300}
                         height={size === "recommendation" ? 150:190}
                         className="rounded-t-3xl justify-center grid object-cover"
                         alt={title}
