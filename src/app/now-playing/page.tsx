@@ -3,11 +3,11 @@ import { getNowPlayingMovies } from "@/services/movies/getNowPlayingMovies";
 import React, { useEffect, useState } from "react";
 import MovieList from "@/components/MovieList/MovieList";
 import PaginationPage from "@/components/PaginationPage/PaginationPage";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 const NowPlayingPage = () => {
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<IMovieDetail[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {

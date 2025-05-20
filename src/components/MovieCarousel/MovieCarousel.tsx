@@ -12,9 +12,10 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import MovieList from "../MovieList/MovieList";
 import MovieImage from "../MovieImage/MovieImage";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 interface MovieProps {
-  movies: any[];
+  movies: IMovieDetail[];
   loading?: boolean;
 }
 

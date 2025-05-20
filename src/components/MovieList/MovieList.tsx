@@ -2,8 +2,9 @@ import MovieCard from "../MovieCard/MovieCard";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MovieImage from "../MovieImage/MovieImage";
+import { IMovieDetail } from "@/types/MovieDetails";
 interface MovieProps {
-  movies: any[];
+  movies: IMovieDetail[];
   loading?: boolean;
 }
 
@@ -39,7 +40,7 @@ const MovieList: React.FC<MovieProps> = ({ movies, loading }) => {
                       <MovieImage
                         title={movie.title}
                         posterPath={movie.poster_path}
-                        releaseYear={movie.release_date}
+                        releaseYear={(movie.release_date)}
                       />
                     </Link>
                     </div>

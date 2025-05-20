@@ -6,7 +6,7 @@ interface IMovieCard {
     title: string;
     voteAverage: number;
     posterPath: string;
-    releaseYear: number;
+    releaseYear: Date;
     description: string;
     size?: "normalPage" | "recommendation"
 }
@@ -43,7 +43,7 @@ const MovieCard: React.FC<IMovieCard> = ({
                         {/* Movie Title */}
                         <p className="h-5">{title}</p>
                         <p className="text-green-500 pt-2 font-semibold ">
-                            ({releaseYear})
+                            ({new Date(releaseYear).getFullYear().toString()})
                         </p>
                         {/* Movie Description */}
                         <div className="h-20">

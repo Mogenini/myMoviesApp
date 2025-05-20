@@ -6,12 +6,12 @@ import { getTopRatedMovies } from "@/services/movies/getTopRatedMovies";
 
 import MovieList from "@/components/MovieList/MovieList";
 import PaginationPage from "@/components/PaginationPage/PaginationPage";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 
 const TopRatedPage = () => {
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<IMovieDetail[]>([]);
 
   const [pageNumber, setPageNumber] = useState(1);
 
