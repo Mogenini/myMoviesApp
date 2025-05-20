@@ -5,22 +5,20 @@ import MovieList from "@/components/MovieList/MovieList";
 import { getPopularMovies } from "@/services/movies/getPopularMovies";
 import { getNowPlayingMovies } from '@/services/movies/getNowPlayingMovies';
 import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 const Home = () => {
   //Upcoming Movies
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
+  const [upcomingMovies, setUpcomingMovies] = useState<IMovieDetail[]>([]);
 
   //Popular Movies
   const [loadingPopularMovies, setLoadingPopularMovies] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [popularMovies, setPopularMovies] = useState<any[]>([]);
+  const [popularMovies, setPopularMovies] = useState<IMovieDetail[]>([]);
 
   // Now playing
   const [loadingNowPlayingMovies, setLoadingNowPlayingMovies] = useState(false); 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [nowPlayingMovies, setNowPlayingMovies] = useState<any[]>([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState<IMovieDetail[]>([]);
 
   useEffect(() => {
     const fetchPopularMovies = async () => {

@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import { getPopularMovies } from "@/services/movies/getPopularMovies";
 import MovieList from "@/components/MovieList/MovieList";
 import PaginationPage from "@/components/PaginationPage/PaginationPage";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 const PopularClientPage = () => {
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<IMovieDetail[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 interface IMovieCard {
   title: string;
   posterPath: string;
-  releaseYear: number;
+  releaseYear: Date;
 }
 
 const MovieImage: React.FC<IMovieCard> = ({
@@ -26,7 +26,7 @@ const MovieImage: React.FC<IMovieCard> = ({
           />
           <div className="pb-4 px-2">
             <p className="text-green-500 pt-2 font-semibold ">
-              ({releaseYear})
+              ({new Date(releaseYear).getFullYear()})
             </p>
             <p className="h-10">{title}</p>
           </div>

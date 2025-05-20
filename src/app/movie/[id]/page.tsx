@@ -10,6 +10,7 @@ import { getMovieRecommendations } from "@/services/movies/getMovieRecomendation
 import { Card } from "@/components/ui/card";
 import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
 
+
 const MovieDetailPage = () => {
   //Movie
   const { id } = useParams();
@@ -22,8 +23,7 @@ const MovieDetailPage = () => {
   const { guestSessionId } = useGuestSession();
 
   // Recomendations
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [movieRecommendations, setMovieRecommendations] = useState<any[]>([]);
+  const [movieRecommendations, setMovieRecommendations] = useState<IMovieDetail[]>([]);
   const [loadingRecomendations, setLoadingRecommendations] = useState<boolean>(true);
   
   // Cargar detalles de la película

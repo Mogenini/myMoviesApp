@@ -4,12 +4,13 @@ import MovieList from "@/components/MovieList/MovieList";
 import { getFavoriteMovies } from "@/services/accounts/getFavoriteMovies";
 import { useGuestSession } from "@/providers/GuestSessionContext";
 import PaginationPage from "@/components/PaginationPage/PaginationPage";
+import { IMovieDetail } from "@/types/MovieDetails";
 
 const MyFavoritesPage = () => {
   const { guestSessionId } = useGuestSession();
   const [loading, setLoading] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [movies, setMovies] = useState<any[]>([]);
+  
+  const [movies, setMovies] = useState<IMovieDetail[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
