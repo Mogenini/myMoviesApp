@@ -23,7 +23,6 @@ const MovieDetailPage = () => {
   const { guestSessionId } = useGuestSession();
 
   // Recomendations
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [movieRecommendations, setMovieRecommendations] = useState<IMovieDetail[]>([]);
   const [loadingRecomendations, setLoadingRecommendations] = useState<boolean>(true);
   
