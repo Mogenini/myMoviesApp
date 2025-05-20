@@ -10,7 +10,6 @@ import { getMovieRecommendations } from "@/services/movies/getMovieRecomendation
 import { Card } from "@/components/ui/card";
 import MovieCarousel from "@/components/MovieCarousel/MovieCarousel";
 
-
 const MovieDetailPage = () => {
   //Movie
   const { id } = useParams();
@@ -23,9 +22,12 @@ const MovieDetailPage = () => {
   const { guestSessionId } = useGuestSession();
 
   // Recomendations
-  const [movieRecommendations, setMovieRecommendations] = useState<IMovieDetail[]>([]);
-  const [loadingRecomendations, setLoadingRecommendations] = useState<boolean>(true);
-  
+  const [movieRecommendations, setMovieRecommendations] = useState<
+    IMovieDetail[]
+  >([]);
+  const [loadingRecomendations, setLoadingRecommendations] =
+    useState<boolean>(true);
+
   // Cargar detalles de la película
   useEffect(() => {
     if (!id || typeof id !== "string") return;
@@ -53,6 +55,7 @@ const MovieDetailPage = () => {
       : [];
     setIsFavorite(favoriteIds.includes(Number(id)));
   }, [id]);
+
   // Marcar o desmarcar como favorito
   const handleToggleFavorite = async () => {
     if (!guestSessionId || !movie) return;
@@ -93,7 +96,7 @@ const MovieDetailPage = () => {
       }
     };
     fetchRecommendations();
-  }, [id]);
+  }, []);
 
   if (loading) return <div>Loading movie...</div>;
 
@@ -115,7 +118,9 @@ const MovieDetailPage = () => {
             />
             <div className="flex flex-col space-y-4">
               <h1 className="text-3xl font-bold">{movie.title}</h1>
-              <p className="italic text-slate-500 text-justify">{movie.tagline}</p>
+              <p className="italic text-slate-500 text-justify">
+                {movie.tagline}
+              </p>
               <p className="text-justify">{movie.overview}</p>
               <div>
                 <strong>Release:</strong> {movie.release_date.toString()}
@@ -142,7 +147,9 @@ const MovieDetailPage = () => {
         </div>
       </Card>
       <div>
-        <h3 className="text-center font-bold text-emerald-800 text-2xl py-2 ">Recomendations</h3>
+        <h3 className="text-center font-bold text-emerald-800 text-2xl py-2 ">
+          Recomendations
+        </h3>
         {movieRecommendations.length > 0 ? (
           <div className="w-screen p-0">
             <MovieCarousel movies={movieRecommendations}></MovieCarousel>
