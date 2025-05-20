@@ -30,7 +30,7 @@ const MyFavoritesPage = () => {
   }, [guestSessionId,pageNumber]);
 
   const nextPage = () => {
-    setPageNumber(pageNumber + 1);
+    setPageNumber(movies.length > 20 ? pageNumber + 1 : pageNumber);
   };
 
   const prevPage = () => {
